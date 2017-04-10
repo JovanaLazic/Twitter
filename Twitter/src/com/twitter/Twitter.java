@@ -2,7 +2,7 @@ package com.twitter;
 import java.util.LinkedList;
 import com.twitter.poruke.TwitterPoruka;
 /**
- * Klasa predstavlja poruke na Twitteru
+ * Klasa predstavlja grupu poruka na Twitteru, napisanih od strane razlicitih autora
  * @author Jovana Lazic
  * @version 1.0
  *
@@ -31,7 +31,7 @@ public class Twitter {
 	public void unesi(String korisnik, String poruka) {
 	//Pravi se nova poruka i puni podacima.
 		TwitterPoruka tp = new TwitterPoruka();
-		tp.setKorisnik("korisnik");
+		tp.setKorisnik(korisnik);
 		tp.setPoruka(poruka);
 		//Poruka se unosi u listu na kraj
 		poruke.addLast(tp);
@@ -39,7 +39,7 @@ public class Twitter {
 	
 	/**
 	 * Metoda prolazi kroz sve poruke u listi poruke i vraca one koje sadrze odredjeni tag
-	 * @param maxBroj maksimalan broj poruka koji se vraca
+	 * @param maxBroj maksimalan broj poruka koji se vraca, ako se negativan broj ili nula onda se postavlja vrednost 100
 	 * @param tag rec koja se pretrazuje
 	 * @return rezulat u vidu niza objekata klase TwitterPoruka
 	 */
@@ -61,7 +61,7 @@ public class Twitter {
 		for (int i = 0; i < poruke.size(); i++)
 			if (poruke.get(i).getPoruka().indexOf(tag)!=-1)
 				if (brojac < maxBroj){
-					rezultat[brojac+1]=poruke.get(i);
+					rezultat[brojac]=poruke.get(i);
 					brojac++;
 				}
 				else break;
